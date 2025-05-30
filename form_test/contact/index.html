@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="お問い合わせフォームのテスト" />
+<title>お問い合わせ</title>
+<link href="../css/reset.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../js/jquery.validate.min.js"></script>
+<script src="../js/messages_ja.js"></script>
+<script src="../js/yubinbango.js"></script>
+<script>
+$(document).ready(function() {
+	$("#contact_form").validate({
+	  
+    //エラーの位置調整
+    errorPlacement: function(error, element){
+      if (element.is(':radio, :checkbox')) {
+        error.appendTo(element.parent());
+      } else {
+      error.insertAfter(element);
+      }
+    },
+	
+	// E-Mail確認
+    rules : {
+      email2: {
+        equalTo: "#email"
+      }
+    }  
+	  
+  });
+});
+</script>
+<style>
+  .error {
+    color: red;
+  }
+</style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+      <h1>お問い合わせフォーム</h1>
+  </div>
+</header>
+  <div class="wrapper">
+    <form action="confirm.php" method="post" id="contact_form" class="h-adr">
+      <span class="p-country-name" style="display:none;">Japan</span>
+      <div class="sp100 of_x">
+        <table id="contactform_table" class="width81 mb_30">
+          <tr>
+            <th><span class="color_red">※</span> <label for="name">お名前</label></th>
+            <td><input name="name" type="text" id="name" size="40" required></td>
+          </tr>
+          <tr>
+            <th><span class="color_red">※</span> <label for="huri">ふりがな</label></th>
+            <td><input name="huri" type="text" id="huri" size="40" required></td>
+          </tr>
+          <tr>
+            <th><span class="color_red">※</span> <label for="email">メールアドレス</label></th>
+            <td><input name="email" type="email" id="email" size="45" required>
+              <br>
+              <p>確認用に再度ご入力下さい。</p>
+              <input name="email2" type="email" id="email2" size="45" required></td>
+          </tr>
+          <tr>
+            <th><label for="profession">ご職業</label></th>
+            <td><select name="profession" id="profession">
+                <option value="" selected>-選択してください-</option>
+                <option value="公務員">公務員</option>
+                <option value="経営者・役員">経営者・役員</option>
+                <option value="会社員">会社員</option>
+                <option value="自営業">自営業</option>
+                <option value="自由業">自由業</option>
+                <option value="専業主婦">専業主婦</option>
+                <option value="パート・アルバイト">パート・アルバイト</option>
+                <option value="学生">学生</option>
+                <option value="その他">その他</option>
+              </select></td>
+          </tr>
+          <tr>
+            <th><label for="subject">件名</label></th>
+            <td><select name="subject" id="subject">
+                <option value="" selected>-選択してください-</option>
+                <option value="ご予約・お申し込みについて">ご予約・お申し込みについて</option>
+                <option value="法人様向け">法人様向け</option>
+                <option value="当サイトに関する感想・質問">当サイトに関する感想・質問</option>
+                <option value="その他">その他</option>
+              </select></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><label for="zip">郵便番号</label>
+              <br>
+              <input name="zip" type="text" id="zip" size="10" class="p-postal-code">
+              <br>
+              <label for="pref">都道府県</label>
+              <br>
+              <select name="pref" id="pref" class="p-region" readonly>
+                <option selected="selected">-選択してください-</option>
+                <option value="北海道">北海道</option>
+                <option value="青森県">青森県</option>
+                <option value="岩手県">岩手県</option>
+                <option value="宮城県">宮城県</option>
+                <option value="秋田県">秋田県</option>
+                <option value="山形県">山形県</option>
+                <option value="福島県">福島県</option>
+                <option value="茨城県">茨城県</option>
+                <option value="栃木県">栃木県</option>
+                <option value="群馬県">群馬県</option>
+                <option value="埼玉県">埼玉県</option>
+                <option value="千葉県">千葉県</option>
+                <option value="東京都">東京都</option>
+                <option value="神奈川県">神奈川県</option>
+                <option value="新潟県">新潟県</option>
+                <option value="富山県">富山県</option>
+                <option value="石川県">石川県</option>
+                <option value="福井県">福井県</option>
+                <option value="山梨県">山梨県</option>
+                <option value="長野県">長野県</option>
+                <option value="岐阜県">岐阜県</option>
+                <option value="静岡県">静岡県</option>
+                <option value="愛知県">愛知県</option>
+                <option value="三重県">三重県</option>
+                <option value="滋賀県">滋賀県</option>
+                <option value="京都府">京都府</option>
+                <option value="大阪府">大阪府</option>
+                <option value="兵庫県">兵庫県</option>
+                <option value="奈良県">奈良県</option>
+                <option value="和歌山県">和歌山県</option>
+                <option value="鳥取県">鳥取県</option>
+                <option value="島根県">島根県</option>
+                <option value="岡山県">岡山県</option>
+                <option value="広島県">広島県</option>
+                <option value="山口県">山口県</option>
+                <option value="徳島県">徳島県</option>
+                <option value="香川県">香川県</option>
+                <option value="愛媛県">愛媛県</option>
+                <option value="高知県">高知県</option>
+                <option value="福岡県">福岡県</option>
+                <option value="佐賀県">佐賀県</option>
+                <option value="長崎県">長崎県</option>
+                <option value="熊本県">熊本県</option>
+                <option value="大分県">大分県</option>
+                <option value="宮崎県">宮崎県</option>
+                <option value="鹿児島県">鹿児島県</option>
+                <option value="沖縄県">沖縄県</option>
+              </select>
+              <br>
+              <label for="address">市、区、町名～番地</label>
+              <br>
+              <input name="address" type="text" id="address" size="50" class="p-locality p-street-address p-extended-address">
+              <br>
+              <label for="other_address">ビル名など</label>
+              <br>
+              <input name="other_address" type="text" id="other_address" size="50"></td>
+          </tr>
+          <tr>
+            <th><span class="color_red">※</span> <label for="tel">電話番号</label></th>
+            <td><input name="tel" type="tel" id="tel" size="20" required></td>
+          </tr>
+          <tr>
+            <th><label for="company_menu">法人様向け</label></th>
+            <td><select name="company_menu" id="company_menu">
+                <option value="" selected>-選択してください-</option>
+                <option value="研修又はイベントご依頼">研修又はイベントご依頼</option>
+                <option value="取材・執筆・監修ご依頼">取材・執筆・監修ご依頼</option>
+                <option value="メディア出演ご依頼">メディア出演ご依頼</option>
+                <option value="その他">その他</option>
+              </select></td>
+          </tr>
+          <tr>
+            <th>お問い合わせ種別</th>
+            <td><input type="checkbox" name="contact_type[]" value="ご依頼" id="request" required><label for="request">ご依頼</label>
+              <input type="checkbox" name="contact_type[]" value="ご質問" id="question" required><label for="question">ご質問</label>
+              <input type="checkbox" name="contact_type[]" value="その他" id="others" required><label for="others">その他</label>
+              </td>
+          </tr>
+          <tr>
+            <th>ご連絡方法</th>
+            <td><input type="radio" name="contact_means" value="Eメール" id="contact_email" required><label for="contact_email">Eメール</label>
+              <input type="radio" name="contact_means" value="電話" id="contact_tel" required><label for="contact_tel">電話</label>
+              <input type="radio" name="contact_means" value="その他" id="contact_others" required><label for="contact_others">その他</label>
+              </td>
+          </tr>
+          <tr>
+            <th><span class="color_red">※</span> <label for="comment">お問い合わせ内容</label></th>
+            <td><textarea name="comment" cols="70" rows="10" id="comment" required></textarea></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><input type="submit" name="Submit" value="確認画面へ進む" id="submit" class="form_btn"></td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
